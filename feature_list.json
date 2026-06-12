@@ -1,0 +1,36 @@
+{
+  "features": [
+    {
+      "id": "feat-001",
+      "name": "Base Nuxt 4 Setup",
+      "description": "Scaffold with pnpm + nuxt.config. Install Nuxt UI, VueUse, Pinia + Pinia Colada, Zod. Configure theme (Google Sans font, scrollbar, heading utilities, --ui-container, ui.theme.defaultVariants). Set up app/ directory, .env.example.",
+      "dependencies": [],
+      "status": "done",
+      "evidence": "pnpm typecheck and pnpm lint both pass clean. Scaffold: Nuxt 4 ui template. Packages: @vueuse/nuxt, @pinia/nuxt, @pinia/colada-nuxt, zod. Theme: Google Sans, blue/slate, lg default size, 4px scrollbar, heading utilities, --ui-container 90rem, body bg muted. .env.example created."
+    },
+    {
+      "id": "feat-002",
+      "name": "Auth (local + OAuth)",
+      "description": "Install nuxt-auth-utils. Add server/api/auth/login.post.ts and logout.post.ts for local auth. Add server/routes/auth/google.get.ts and github.get.ts for OAuth. Build app/pages/login.vue with local form + Google/GitHub buttons. Add session password + OAuth credentials to .env.example.",
+      "dependencies": ["feat-001"],
+      "status": "done",
+      "evidence": "pnpm typecheck and pnpm lint pass clean. nuxt-auth-utils installed. server/api/auth/login.post.ts + logout.post.ts (session-based). server/routes/auth/google.get.ts + github.get.ts (OAuth). app/pages/login.vue with UForm (email/password + Zod), Google and GitHub UButtons."
+    },
+    {
+      "id": "feat-003",
+      "name": "Database (Drizzle + Cloudflare D1)",
+      "description": "Install Drizzle ORM + drizzle-kit. Configure wrangler.toml D1 binding. Add server/utils/db.ts with useDB(event) helper. Add server/cloudflare-env.d.ts. Add cf:types, db:generate, db:migrate, db:studio scripts to package.json. Install nitro-cloudflare-dev for local dev binding.",
+      "dependencies": ["feat-001"],
+      "status": "done",
+      "evidence": "pnpm typecheck and pnpm lint pass clean. drizzle-orm + drizzle-kit installed. drizzle.config.ts targets server/database/schema.ts + migrations. server/database/schema.ts has placeholder users table. server/utils/db.ts exports useDB(event) -> drizzle(DB, { schema }). wrangler.toml migrations_dir set. Scripts added: cf:types, db:generate, db:migrate, db:studio."
+    },
+    {
+      "id": "feat-004",
+      "name": "KV Store (Cloudflare KV)",
+      "description": "Configure wrangler.toml KV binding. Add server/utils/kv.ts with useKV(event) helper. Update cloudflare-env.d.ts with KV namespace types.",
+      "dependencies": ["feat-003"],
+      "status": "done",
+      "evidence": "pnpm typecheck and pnpm lint pass clean. server/utils/kv.ts exports useKV(event) -> event.context.cloudflare.env.KV. wrangler.toml KV binding and cloudflare-env.d.ts types were already in place from Cloudflare local dev setup."
+    }
+  ]
+}

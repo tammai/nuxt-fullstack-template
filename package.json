@@ -1,0 +1,57 @@
+{
+  "name": "nuxt-fullstack-template",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "NUXT_DEVTOOLS_ENABLED=false nuxt build",
+    "dev": "nuxt dev",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "typecheck": "nuxt typecheck",
+    "test:unit": "vitest run",
+    "test:e2e": "playwright test",
+    "cf:types": "wrangler types",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "wrangler d1 migrations apply nuxt-fullstack-template-db --local",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "@iconify-json/lucide": "^1.2.111",
+    "@iconify-json/simple-icons": "^1.2.85",
+    "@nuxt/ui": "^4.8.2",
+    "@pinia/colada-nuxt": "^1.0.1",
+    "@pinia/nuxt": "^0.11.3",
+    "@vueuse/nuxt": "^14.3.0",
+    "drizzle-orm": "^0.45.2",
+    "nuxt": "^4.4.8",
+    "nuxt-auth-utils": "^0.5.29",
+    "tailwindcss": "^4.3.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260611.1",
+    "@nuxt/devtools": "4.0.0-alpha.7",
+    "@nuxt/eslint": "^1.15.2",
+    "@nuxt/test-utils": "^4.0.3",
+    "@playwright/test": "^1.60.0",
+    "@vue/test-utils": "^2.4.11",
+    "drizzle-kit": "^0.31.10",
+    "eslint": "^10.4.1",
+    "happy-dom": "^20.10.2",
+    "lint-staged": "^17.0.7",
+    "nitro-cloudflare-dev": "^0.2.2",
+    "simple-git-hooks": "^2.13.1",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.8",
+    "vue-tsc": "^3.3.3",
+    "wrangler": "^4.99.0"
+  },
+  "packageManager": "pnpm@11.5.2",
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*.{ts,vue,js,mjs}": "eslint --fix"
+  }
+}

@@ -1,0 +1,15 @@
+name = "nuxt-fullstack-template"
+compatibility_date = "2025-01-15"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "nuxt-fullstack-template-db"
+database_id = "YOUR_D1_DATABASE_ID"
+preview_database_id = "DB"
+migrations_dir = "server/database/migrations"
+
+[[kv_namespaces]]
+binding = "KV"
+id = "YOUR_KV_NAMESPACE_ID"
+preview_id = "KV"
